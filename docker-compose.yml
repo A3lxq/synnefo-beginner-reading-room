@@ -1,0 +1,18 @@
+services:
+  reading-room:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: halcyon-beginner-reading-room
+    environment:
+      - CTF_SECRET=${CTF_SECRET}
+    ports:
+      - "8002:80"
+    networks:
+      - reading-room-net
+    # Deliberately vulnerable teaching target: do not expose beyond an
+    # isolated lab network / NAT'd host-only interface.
+
+networks:
+  reading-room-net:
+    driver: bridge
