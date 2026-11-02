@@ -16,23 +16,11 @@ reuse, and a SUID privilege escalation.
 **This machine is intentionally vulnerable. Run it only on an isolated
 network.**
 
-## Requirements
+## Status
 
-- Docker + Docker Compose
-- A player machine with: `nmap`, `curl`, a browser (+ dev tools or Burp
-  Suite Community), `gobuster` or `ffuf`, `sqlmap` (optional — the UNION
-  injection is manually solvable too), `steghide`, a way to send a
-  multipart upload with a custom `Content-Type` (Burp, or `curl -F`)
-
-## Starting the box
-
-```
-./start.sh
-```
-Generates a fresh `.env` with a random per-deployment secret and brings the
-stack up.
-
-- Web: http://localhost:8002
+This box ships as a VM appliance (OVA) — see the `vm/` directory once it's
+built. There is no Docker build in this repo (an earlier Docker build was
+removed; a Docker version may be added back separately).
 
 ## Flag format
 
@@ -51,3 +39,4 @@ stack up.
 - [`docs/hints.md`](docs/hints.md) — progressive hints
 - [`docs/tools.md`](docs/tools.md) — what each tool is for
 - [`docs/writeup/WRITEUP.md`](docs/writeup/WRITEUP.md) — full spoiler walkthrough
+- [`flags/generate_flags.php`](flags/generate_flags.php) — the per-deployment flag derivation scheme, used by `organizer/verify.py`
